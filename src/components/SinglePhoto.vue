@@ -1,11 +1,19 @@
 <template>
-  <div>Hello World</div>
+  <div id="singlephoto">
+    Hello World!!
+    <img :key="selectedPhoto" :src="'data:img/png;base64,' + selectedPhoto">
+  </div>
 </template>
 
 <script>
 export default {
-  name: "SinglePhoto"
+  name: "SinglePhoto",
+  props: ["selectedPhoto"]
 };
 </script>
 
-<style></style>
+<style>
+#singlephoto {
+  color: pink;
+}
+</style>

@@ -4,7 +4,7 @@
       v-for="photo in photos"
       :key="photo"
       :src="'data:img/png;base64,' + photo"
-      @click="selectPhoto(photo)"
+      @click="selectPhoto(photo, 'SinglePhoto')"
     >
   </div>
 </template>

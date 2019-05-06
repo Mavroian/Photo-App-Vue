@@ -4,7 +4,7 @@
     <h1>{{ title }}</h1>
     <navbar/>
     <allPhotos v-if="currentView === 'AllPhoto'" :selectPhoto="selectPhoto"/>
-    <singlePhoto v-if="currentView === 'SinglePhoto'" :currentView="currentView"/>
+    <singlePhoto v-if="currentView === 'SinglePhoto'" :selectedPhoto="selectedPhoto"/>
   </div>
 </template>
 
@@ -25,9 +25,9 @@ export default {
     selectedPhoto: ""
   }),
   methods: {
-    selectPhoto: function(photo) {
+    selectPhoto: function(photo, newView) {
       this.selectedPhoto = photo;
-      this.currentView = "SinglePhoto";
+      this.currentView = newView;
     }
   }
 };
