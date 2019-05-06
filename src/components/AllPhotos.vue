@@ -1,6 +1,11 @@
 <template>
   <div>
-    <img v-for="photo in photos" :key="photo" :src="'data:img/png;base64,' + photo">
+    <img
+      v-for="photo in photos"
+      :key="photo"
+      :src="'data:img/png;base64,' + photo"
+      @click="selectPhoto(photo)"
+    >
   </div>
 </template>
 
@@ -12,6 +17,8 @@ export default {
   data: () => ({
     photos: []
   }),
+  props: ["selectPhoto"],
+  methods: {},
   beforeMount() {
     console.log("Hello world!");
     listObjects()
