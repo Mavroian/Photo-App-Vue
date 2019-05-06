@@ -29,8 +29,11 @@ export default {
       this.selectedPhoto = photo;
       this.currentView = newView;
     },
-    uploadPhoto: function() {
-      //
+    uploadPhoto: event => {
+      console.log("upload photo called!");
+      event.preventDefault();
+      console.log("even prevent default worked, event is", event);
+      this.photos.push(event.target.files[0]);
     }
   }
 };
