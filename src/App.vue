@@ -2,8 +2,8 @@
   <div id="app" v-on:selectPhoto="currentView='SinglePhoto'">
     <img alt="Vue logo" src="./assets/logo.png">
     <h1>{{ title }}</h1>
-    <navbar/>
-    <allPhotos v-if="currentView === 'AllPhoto'" :selectPhoto="selectPhoto"/>
+    <navbar :selectPhoto="selectPhoto" :uploadPhoto="uploadPhoto"/>
+    <allPhotos v-if="currentView === 'AllPhotos'" :selectPhoto="selectPhoto"/>
     <singlePhoto v-if="currentView === 'SinglePhoto'" :selectedPhoto="selectedPhoto"/>
   </div>
 </template>
@@ -21,13 +21,16 @@ export default {
   },
   data: () => ({
     title: "Photo Upload App",
-    currentView: "AllPhoto",
+    currentView: "AllPhotos",
     selectedPhoto: ""
   }),
   methods: {
     selectPhoto: function(photo, newView) {
       this.selectedPhoto = photo;
       this.currentView = newView;
+    },
+    uploadPhoto: function() {
+      //
     }
   }
 };
