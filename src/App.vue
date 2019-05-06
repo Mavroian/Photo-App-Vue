@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <img alt="Vue logo" src="./assets/logo.png">
     <h1>{{ title }}</h1>
-    <navbar />
+    <navbar/>
+    <allphotos/>
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar";
+import AllPhotos from "./components/AllPhotos";
 
 export default {
   name: "App",
   components: {
-    navbar: Navbar
+    navbar: Navbar,
+    allphotos: AllPhotos
   },
   data: () => ({
     title: "Photo Upload App"
