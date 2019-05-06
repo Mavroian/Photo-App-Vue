@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <h1>{{ title }}</h1>
     <navbar :selectPhoto="selectPhoto" :uploadPhoto="uploadPhoto"/>
-    <allPhotos v-if="currentView === 'AllPhotos'" :selectPhoto="selectPhoto"/>
+    <allPhotos v-if="currentView === 'AllPhotos'" :selectPhoto="selectPhoto" :photos="photos"/>
     <singlePhoto v-if="currentView === 'SinglePhoto'" :selectedPhoto="selectedPhoto"/>
   </div>
 </template>
@@ -22,18 +22,24 @@ export default {
   data: () => ({
     title: "Photo Upload App",
     currentView: "AllPhotos",
-    selectedPhoto: ""
+    selectedPhoto: "",
+    photos: []
   }),
   methods: {
     selectPhoto: function(photo, newView) {
       this.selectedPhoto = photo;
       this.currentView = newView;
     },
-    uploadPhoto: event => {
-      console.log("upload photo called!");
+    uploadPhoto: function(event) {
       event.preventDefault();
-      console.log("even prevent default worked, event is", event);
-      this.photos.push(event.target.files[0]);
+      let file = event.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        console.log(reader.result, "helloooooo", typeof reader.result);
+        let base64 = reader.result.slice(22, Infinity);
+        this.photos.unshift(base64);
+      };
     }
   }
 };

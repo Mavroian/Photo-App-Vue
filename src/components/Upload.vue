@@ -2,7 +2,7 @@
 <template>
   <div>
     <!-- <form onInputCapture="uploadPhoto(photo)"> -->
-    <input type="file" id="file" ref="file" v-on:change="uploadPhoto">
+    <input type="file" id="file" ref="file" v-on:change="uploadPhoto" style="display:none">
     <button @click="clickInput">Upload</button>
     <!-- </form> -->
   </div>

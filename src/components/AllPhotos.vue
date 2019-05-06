@@ -14,10 +14,8 @@ import { listObjects, getSingleObject } from "../../utils";
 
 export default {
   name: "AllPhotos",
-  data: () => ({
-    photos: []
-  }),
-  props: ["selectPhoto"],
+  data: () => ({}),
+  props: ["selectPhoto", "photos"],
   methods: {},
   beforeMount() {
     console.log("Hello world!");
