@@ -49,6 +49,7 @@ export function getSingleObject(key) {
         resolve(data.Body.toString("base64"));
       }
     );
+    // bucket.deleteObject;
   });
 
   return getSingleObject;
@@ -56,7 +57,7 @@ export function getSingleObject(key) {
 
 export function saveObject(file) {
   const saveObject = new Promise((resolve) => {
-    bucket.putObject(
+    let x = bucket.putObject(
       {
         Key: file.name,
         Body: file,
@@ -71,7 +72,13 @@ export function saveObject(file) {
         resolve(data);
       }
     );
+    x.on("httpUploadProgress", function(progress) {
+      console.log(progress.loaded + " of " + progress.total + " bytes");
+      let x = document.getElementById("progressbar");
+      console.log("progress bar is", x);
+      x.value = (progress.loaded / progress.total) * 100;
+    });
   });
 
-  return saveObject;
+  // return saveObject;
 }

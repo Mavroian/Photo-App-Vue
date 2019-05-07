@@ -4,7 +4,7 @@
     <!-- <form onInputCapture="uploadPhoto(photo)"> -->
     <input type="file" id="file" ref="file" v-on:change="uploadPhoto" style="display:none">
     <br>
-    <progress max="100" :value.prop="uploadPercentage"></progress>
+    <progress max="100" :value.prop="uploadPercentage" id="progressbar" style="width:1000px;"></progress>
     <button @click="clickInput">Upload</button>
     <!-- </form> -->
   </div>
@@ -14,7 +14,7 @@
 export default {
   // element: "p",
   name: "Upload",
-  props: ["selectPhoto", "uploadPhoto"],
+  props: ["selectPhoto", "uploadPhoto", "uploadPercentage"],
   methods: {
     // setInputRef: function(elt) {
     //   console.log("Set Input Ref working", elt);

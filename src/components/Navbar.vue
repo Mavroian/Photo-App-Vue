@@ -1,7 +1,11 @@
 <template>
   <div>
     <button @click="selectPhoto('', 'AllPhotos')">Home</button>
-    <upload :selectPhoto="selectPhoto" :uploadPhoto="uploadPhoto"/>
+    <upload
+      :selectPhoto="selectPhoto"
+      :uploadPhoto="uploadPhoto"
+      :uploadPercentage="uploadPercentage"
+    />
   </div>
 </template>
 
@@ -12,7 +16,7 @@ export default {
   components: {
     upload: Upload
   },
-  props: ["selectPhoto", "uploadPhoto"]
+  props: ["selectPhoto", "uploadPhoto", "uploadPercentage"]
 };
 </script>
 
