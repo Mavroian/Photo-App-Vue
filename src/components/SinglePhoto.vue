@@ -1,6 +1,5 @@
 <template>
   <div id="singlephoto">
-    Hello World!!
     <img :key="selectedPhoto" :src="'data:img/png;base64,' + selectedPhoto">
   </div>
 </template>
@@ -13,7 +12,4 @@ export default {
 </script>
 
 <style>
-#singlephoto {
-  color: pink;
-}
 </style>

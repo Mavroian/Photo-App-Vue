@@ -3,6 +3,8 @@
   <div>
     <!-- <form onInputCapture="uploadPhoto(photo)"> -->
     <input type="file" id="file" ref="file" v-on:change="uploadPhoto" style="display:none">
+    <br>
+    <progress max="100" :value.prop="uploadPercentage"></progress>
     <button @click="clickInput">Upload</button>
     <!-- </form> -->
   </div>

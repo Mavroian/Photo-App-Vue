@@ -12,6 +12,8 @@
 import Navbar from "./components/Navbar";
 import AllPhotos from "./components/AllPhotos";
 import SinglePhoto from "./components/SinglePhoto";
+import { saveObject } from "../utils";
+
 export default {
   name: "App",
   components: {
@@ -33,12 +35,13 @@ export default {
     uploadPhoto: function(event) {
       event.preventDefault();
       let file = event.target.files[0];
+      saveObject(file);
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
         console.log(reader.result, "helloooooo", typeof reader.result);
         let base64 = reader.result.slice(22, Infinity);
-        this.photos.unshift(base64);
+        this.photos.push(base64);
       };
     }
   }

@@ -1,8 +1,9 @@
 <template>
   <div>
     <img
+      class="allphotos"
       v-for="photo in photos"
-      :key="photo"
+      :key="Math.random()"
       :src="'data:img/png;base64,' + photo"
       @click="selectPhoto(photo, 'SinglePhoto')"
     >
@@ -17,26 +18,27 @@ export default {
   data: () => ({}),
   props: ["selectPhoto", "photos"],
   methods: {},
-  beforeMount() {
-    console.log("Hello world!");
+  created() {
     listObjects()
-      .then(result => result.slice(0, 10))
+      .then(result => result.slice(220, Infinity))
       .then(result => {
-        console.log(result);
         return result;
       })
       .then(result => {
         return result.map((element, index) =>
           getSingleObject(element.Key).then(photo => {
             this.photos.push(photo);
-            // console.log(this.photos);
           })
         );
-        // console.log(result);
-        // return result;
       });
   }
 };
 </script>
 
-<style></style>
+<style>
+.allphotos {
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+}
+</style>
