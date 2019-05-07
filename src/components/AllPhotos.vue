@@ -20,7 +20,7 @@ export default {
   methods: {},
   created() {
     listObjects()
-      .then(result => result.slice(220, Infinity))
+      .then(result => result.slice(0, 250))
       .then(result => {
         return result;
       })

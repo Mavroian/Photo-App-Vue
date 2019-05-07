@@ -40,8 +40,7 @@ export default {
     uploadPhoto: function(event) {
       event.preventDefault();
       let file = event.target.files[0];
-      console.log(file);
-      saveObject(file);
+      console.log(saveObject(file));
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {

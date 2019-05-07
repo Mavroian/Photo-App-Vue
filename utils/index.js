@@ -49,10 +49,17 @@ export function getSingleObject(key) {
         resolve(data.Body.toString("base64"));
       }
     );
-    // bucket.deleteObject;
   });
 
   return getSingleObject;
+}
+
+function deleteObject(key) {
+  bucket.deleteObject({ Bucket: bucketName, Key: key }, function(err, data) {
+    if (err) console.log(err, err.stack);
+    // an error occurred
+    else console.log("data", data); // successful response
+  });
 }
 
 export function saveObject(file) {
@@ -73,16 +80,10 @@ export function saveObject(file) {
       }
     );
     x.on("httpUploadProgress", function(progress) {
-      // console.log(progress.loaded + " of " + progress.total + " bytes");
       let x = document.getElementById("progressbar");
-      // console.log("progress bar is", x);
       x.value = (progress.loaded / progress.total) * 100;
     });
   });
 
   return saveObject;
-}
-
-export function deleteObject(key) {
-  bucket.deleteObject({ Bucket: bucketName, Key: key });
 }
