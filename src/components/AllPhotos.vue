@@ -17,7 +17,6 @@ export default {
   name: "AllPhotos",
   data: () => ({}),
   props: ["selectPhoto", "photos"],
-  methods: {},
   created() {
     listObjects()
       .then(result => result.slice(0, 250))
@@ -27,7 +26,7 @@ export default {
       .then(result => {
         return result.map((element, index) =>
           getSingleObject(element.Key).then(photo => {
-            this.photos.push(photo);
+            this.photos.push(photo); //should make mutation for this change
           })
         );
       });

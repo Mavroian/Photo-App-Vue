@@ -16,12 +16,7 @@ export default {
   name: "Upload",
   props: ["selectPhoto", "uploadPhoto", "uploadPercentage"],
   methods: {
-    // setInputRef: function(elt) {
-    //   console.log("Set Input Ref working", elt);
-    //   // element = elt;
-    // },
     clickInput: function() {
-      console.log("clickInput working!");
       this.$refs.file.click();
     }
   }
