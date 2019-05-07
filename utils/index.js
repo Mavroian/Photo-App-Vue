@@ -73,12 +73,16 @@ export function saveObject(file) {
       }
     );
     x.on("httpUploadProgress", function(progress) {
-      console.log(progress.loaded + " of " + progress.total + " bytes");
+      // console.log(progress.loaded + " of " + progress.total + " bytes");
       let x = document.getElementById("progressbar");
-      console.log("progress bar is", x);
+      // console.log("progress bar is", x);
       x.value = (progress.loaded / progress.total) * 100;
     });
   });
 
-  // return saveObject;
+  return saveObject;
+}
+
+export function deleteObject(key) {
+  bucket.deleteObject({ Bucket: bucketName, Key: key });
 }
